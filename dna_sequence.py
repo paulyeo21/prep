@@ -26,8 +26,13 @@ class DnaSequence:
 
         for x in range(len(self.pattern)):
             for y in range(len(self.alphabet)):
+                # Compose input string
                 string = self.pattern[:x] + self.alphabet[y]
 
+                # Match the last few characters of the string with the string pattern
+                # to see how many characters we have already read in.
+                # i.e. if the composed string is "aaba" then check if "aaba" matches
+                # if not then move on to "_aba", then "__ba", then "___a".
                 for z in range(len(string)):
                     if string[z:] == self.pattern[:len(string)-z]:
                         transitions[x, y] = x + 1 - z
@@ -55,3 +60,4 @@ print(dna_sequence.search("CAAT")) # => False
 
 dna_sequence = DnaSequence("AABAC") 
 print(dna_sequence.search("AABCAAABAABACCBA")) # => True
+
