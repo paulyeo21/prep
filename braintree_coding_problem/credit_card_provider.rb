@@ -1,5 +1,10 @@
 class CreditCardProvider
+  # Class stores Card objects and spits out summary
+  # Assumptions:
+  #   Card class has methods: "valid?" "name" "balance"
+  #
   def initialize
+    # Better to have a sorted hash map
     @cards = {}
   end
 
@@ -25,6 +30,7 @@ class CreditCardProvider
 
   private
 
+  # Assume Card oject has "balance" method
   def balance_of(name)
     @cards[name].balance
   end
