@@ -1,5 +1,6 @@
 import sys
 
+# T: O(m * n) where m is the amount and n is the number of denominations
 class Solution:
     def coinChange(self, coins, amount):
         changes = [sys.maxint] * (amount + 1)
@@ -30,4 +31,5 @@ print(solution.coinChange([1, 2, 5], 11))
 print(solution.coinChange([2], 3))
 print(solution.coinChange([1], 0))
 print(solution.coinChange([186, 419, 83, 408], 6249))
+print(solution.coinChange([1, 3, 9, 10], 15))
 
