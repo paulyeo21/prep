@@ -25,7 +25,18 @@ def keypadCombinationsUtil(number, combinations, string):
         keypadCombinationsUtil(strNumber[1:], combinations, string + char)
     return combinations
 
+def keypadCombinations1(number):
+    strNumber = str(number)
+    if not number:
+        return [""]
+    combos = []
+    for char in keypad[strNumber[0]]:
+        for combo in keypadCombinations1(strNumber[1:]):
+            combos.append(char + combo)
+    return combos
+
 
 print(keypadCombinations(1))
 print(keypadCombinations(2))
 print(keypadCombinations(23))
+print(keypadCombinations1(23))
