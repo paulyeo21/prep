@@ -26,13 +26,29 @@ def length_of_longest_substring(s)
   output
 end
 
+# T: O(n)
+# S: O(n)
+require "set"
+
+def length_of_longest_substring(s)
+  set = Set.new
+  i, j, output = 0, 0, 0
+  while i <= s.length-1 and j <= s.length-1
+    if set.include?(s[j])
+      set.delete(s[i])
+      i = i + 1
+    else
+      set.add(s[j])
+      output = [output, j-i+1].max
+      j = j + 1
+    end
+  end
+  output
+end
+
 puts length_of_longest_substring("abcabcbb")
-puts
+puts length_of_longest_substring("bacabc")
 puts length_of_longest_substring("bbb")
-puts
 puts length_of_longest_substring(" ")
-puts
 puts length_of_longest_substring("")
-puts
 puts length_of_longest_substring("au")
-puts

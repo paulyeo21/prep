@@ -12,7 +12,6 @@
 # T: O(n^3)
 # S: O(1)
 def longest_palindrome_substring(s)
-  # 
 end
 
 puts longest_palindrome_substring("babad")
