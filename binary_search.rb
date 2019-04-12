@@ -1,3 +1,16 @@
+# Binary Search
+#
+# Check mid point of input list if the element is equal to key. If not equal then 
+# find whether mid point is less than or greater than key. If greater than key,
+# then we know that key exists on left half, so repeat with left half of input. 
+# Do this until we find key that matches or return nil for not found.
+#
+# Time complexity is log2 n, because worst case scenario we find key as last element
+# when the half is length of 1, this requires cutting the input size in half each
+# time until length of 1, which is (log2 n) + 1.
+#
+# T: O(log2 n)
+# S: O(1)
 def binary_search(key, list, left, right)
   index = (left + right) / 2
   mid = list[index]
