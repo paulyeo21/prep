@@ -66,8 +66,8 @@ end
 
 board = TTTBoard.new
 ai = TTTAI.new(board)
-board.add_token("X", [0, 0]) # human move for now
-ai.move
-ai.move
+# board.add_token("X", [0, 0]) # human move for now
+# ai.move
+# ai.move
 puts board
 
