@@ -1,9 +1,12 @@
 # Given a long text build a hash of words to occurrences.
 
 def word_cloud(text)
-  # 1. consider pronouns
-  # 2. consider nouns at start of sentences
-  # 3. consider punctuation
+  # 1. split the words from the input string
+  # 2. populate the hash with each word
+  # 3. handle words that are both uppercase and lowercase
+  # consider pronouns
+  # consider nouns at start of sentences
+  # consider punctuation
   word_counts = {}
   end_of_word_delimiter = [",", ":", ".", " ", ";", "?", "!"]
   start_of_word, i = 0, 0
