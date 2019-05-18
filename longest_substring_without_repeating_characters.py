@@ -1,27 +1,42 @@
-def longest_substring_without_repeating_characters(string):
-    repeated = {}
-    max_length = 0
-    current_length = 0
-    index_of_last_repeated_char = 0
+# Given a string find the length of the longest substring without 
+# repeating characters.
 
-    for i, char in enumerate(string):
-        index_of_previous_current_char = repeated.get(char, -1)
-        if index_of_previous_current_char < 0:
-            current_length += 1
+def longestSubstringWithoutRepeatingChar(s):
+    # Consider the case when the longest substring starts in the middle
+    # of another substring. For instance, for the string 'dvdf', if we try
+    # 'dv' and start checking substrings after 'dv' such as 'df', we wont
+    # consider the substring 'vdf' which is actually the longest substring.
+    # What we need to do is still use two pointers, i and j, with i as the
+    # beginning of a substring and j as the end of a substring, but when
+    # j encounters a character that has already been encountered, increment
+    # i by 1 and remove the previous character at i.
+    # T: O(n)
+    # S: O(n)
+
+    if len(s) == 0:
+        return 0
+
+    i, j = 0, 1
+    longest_length = 0
+    encountered_chars = set()
+    encountered_chars.add(s[i])
+
+    while j < len(s):
+        if s[j] in encountered_chars:
+            longest_length = max(longest_length, j - i)
+            encountered_chars.remove(s[i])
+            i += 1
         else:
-            max_length = max(max_length, current_length)
-            current_length = i - max(index_of_previous_current_char, index_of_last_repeated_char)
-            index_of_last_repeated_char = max(index_of_previous_current_char, index_of_last_repeated_char)
+            encountered_chars.add(s[j])
+            j += 1
 
-        repeated[char] = i
+    longest_length = max(longest_length, j - i)
+    return longest_length
 
-    max_length = max(max_length, current_length)
-    return max_length
-
-print(longest_substring_without_repeating_characters("bbbbbb"))
-print(longest_substring_without_repeating_characters("abcabcd"))
-print(longest_substring_without_repeating_characters("pwwkew"))
-print(longest_substring_without_repeating_characters("dvdf"))
-print(longest_substring_without_repeating_characters("tmmzuxt"))
-print(longest_substring_without_repeating_characters("zwnigfunjwz"))
-print(longest_substring_without_repeating_characters("gzdrgocdtidpxmucbqojrghfel"))
+print longestSubstringWithoutRepeatingChar('abcabcd') # 4
+print longestSubstringWithoutRepeatingChar('dvdf') # 3
+print longestSubstringWithoutRepeatingChar('bbbbbb') # 1
+print longestSubstringWithoutRepeatingChar('ddvf') # 3
+print longestSubstringWithoutRepeatingChar('pwwkew') # 3
+print longestSubstringWithoutRepeatingChar('dvdf') # 3
+print longestSubstringWithoutRepeatingChar('tmmzuxt') # 5
