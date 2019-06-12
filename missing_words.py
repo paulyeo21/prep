@@ -1,3 +1,4 @@
+
 def missingWords(s, t):
     i, j = 0, 0
     output = []

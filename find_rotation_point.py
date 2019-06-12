@@ -1,7 +1,7 @@
 # Given a list of words, return index of the alphabetically first word.
 
 # T: O(lg n)
-# S: O(n)
+# S: O(lg n)
 def find_rotation_point(words):
     # use binary search
     return find_rotation_point_helper(words, 0, len(words)-1)

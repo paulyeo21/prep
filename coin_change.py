@@ -1,34 +1,31 @@
-import sys
+# Given an amount and a number of denomations, find the number of
+# ways to make the amount using the denominations.
 
-# T: O(m * n) where m is the amount and n is the number of denominations
-class Solution:
-    def coinChange(self, coins, amount):
-        changes = [sys.maxint] * (amount + 1)
-        changes[0] = 0
+class Solution(object):
+    def __init__(self):
+        self.memo = {}
 
-        for change in range(1, amount + 1):
-            for coin in coins:
-                if coin > change:
-                    continue
+    def makeChange(self, amount, denominations, i=0):
+        # 1. Sort in descending order.
+        # 2. For each denomination in descending order try subtracting from
+        #    amount until amount == 0 or amount < 0. If amount == 0 then
+        #    increment number of ways, otherwise if amount < 0, don't increment.
+        # 3. return counter
 
-                # If there is a denomination for that change amount
-                elif coin == change:
-                    changes[change] = 1
+        print amount, denominations, i
 
-                # Find the number of coins to make change of the 
-                # current change amount - current coin then add
-                # the current coin to make the number of coins
-                elif (changes[change - coin] + 1) < changes[change]:
-                    changes[change] = changes[change - coin] + 1
+        if amount == 0:
+            return 1
 
-        if changes[amount] != sys.maxint:
-            return changes[amount]
-        else:
-            return -1
+        if amount < 0:
+            return 0
 
-solution = Solution()
-print(solution.coinChange([1, 2, 5], 11))
-print(solution.coinChange([2], 3))
-print(solution.coinChange([1], 0))
-print(solution.coinChange([186, 419, 83, 408], 6249))
-print(solution.coinChange([1, 3, 9, 10], 15))
+        number_of_ways = 0
+
+        for d in denominations[i:]:
+            number_of_ways += self.makeChange(amount - d, denominations, i+1) \
+                    + self.makeChange(amount - d, denominations, i)
+
+        return number_of_ways
+
+print Solution().makeChange(4, sorted([1,2,3], reverse=True)) # 4
