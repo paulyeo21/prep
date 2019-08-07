@@ -168,18 +168,3 @@ assert(maxProfit(None) == 0)
 assert(maxProfit([1]) == 0)
 assert(maxProfit([4,4,10,20,3]) == 16)
 assert(maxProfit([4,-4,10,20,3]) == 24)
-
-# 10. Given a list of words that are alphabetically ordered but rotated, find rotation point.
-
-# Clarifications:
-#   a) Given an array of strings that were in order, but rotated, return the index of the first
-#      string in that order.
-#   b) Will rotation point always exist? Yes.
-#   c) Can we be given an empty array? No.
-#   d) Can we be given None? No.
-# Edge cases:
-#   a) Given ['a','b','c'] return 0
-#   b) Given ['b','c','a'] return 2
-#   c) Given ['a'] return 0
-# Algorithms:
-#   a) 
