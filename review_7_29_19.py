@@ -474,10 +474,3 @@ def productExceptAtIndex(integers):
 assert(productExceptAtIndex([]) == [])
 assert(productExceptAtIndex([0, 1, 10]) == [10, 0, 0])
 assert(productExceptAtIndex([1, 2, 3]) == [6, 3, 2])
-
-# 18. Compute the nth fibonacci number. Compute using memoization. Compute using bottom-up.
-#
-# Clarifications:
-#   a) Fibonacci is the sequence of the numbers starting with 0 and 1 where you add the previous two numbers.
-#   b) Use memoization means there will be duplicate work so cache that work.
-#   c) Bottom-up means to
