@@ -4,6 +4,7 @@ import './App.css';
 import Clock from './Clock.js';
 import Toggle from './Toggle.js';
 import FilterableProductTable from './FilterableProductTable.js';
+import Timer from './Timer.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class App extends React.Component {
         <Clock isToggleOn={this.state.isToggleOn} />
         <Toggle isToggleOn={this.state.isToggleOn} handleToggle={this.handleToggle} />
         <FilterableProductTable />
+        <Timer />
       </div>
     );
   }
